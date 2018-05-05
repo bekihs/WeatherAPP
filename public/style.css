@@ -29,7 +29,7 @@ body {
 }
 
 .comments-container .comment-text {
-    background: rgba(175, 214, 230, 0.698);
+    color: rgb(49, 48, 48);
 }
 
 .location .fa-window-close {
@@ -38,6 +38,10 @@ body {
 }
 
 .location .fa-window-close:hover{
-   color: rgba(194, 10, 10, 0.842);
+   color: rgba(167, 9, 9, 0.842);
    cursor: pointer; 
+}
+
+.comments-container .fa-trash {
+    color: rgba(148, 37, 37, 0.623);
 }

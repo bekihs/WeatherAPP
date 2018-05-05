@@ -27,7 +27,7 @@
                     <h5 class="temps">{{tempC}} &#176C // {{tempF}} &#176F <img id="weather-icon" src="{{icon}}" title="{{condition}}"> at {{time}} on {{date}} (local time)</h5>
                     <div class="comments-container">
                         {{#each comments}}
-                        <p><span class="comment-text">{{text}}</span></p>
+                        <p><span data-id="{{commid}}" class="comment-text">{{text}}          </span><a><i class="fa fa-trash fa-1x"></i></a></p>
                         {{/each}}
                     </div>
                     <div class="add-comments input-group">

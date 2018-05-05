@@ -4,8 +4,9 @@ var renderPost = new Render;
 
 
 class Data {
-    constructor() {
+    constructor(commentID) {
         this.fetchedCity = []; //soon, will have to change to  _getFromLocalStorage();
+        this.commentID = 0;
     }
 
 
@@ -29,13 +30,17 @@ class Data {
         $('.new-div').empty();
         var city = this.getPostById(postId)
         var commObj = {
-            text: comment
+            text: comment,
+            commid: this.commentID
         }
+        
        city.comments.push(commObj);
-       //console.log(this.fetchedCity);
+       this.commentID += 1
+       console.log(this.fetchedCity);
        renderPost.successCallback(this.fetchedCity)
     }
 
+    //move this to remove.js
     removeWeatherBox(currentIcon){
         var clickedIcon = $(currentIcon).closest('.render-div');
         var id = clickedIcon.data().id;
@@ -47,6 +52,18 @@ class Data {
         clickedIcon.remove();
 
 
+    }
+
+    removeComment(currentComment){
+       var boxId = $(currentComment).closest('.render-div').data().id;
+       var getBox= this.getPostById(boxId);
+       var boxIndex = this.fetchedCity.indexOf(getBox);
+
+       var commentId = $(currentComment).closest('.comments-container').find('.comment-text').data().id; 
+        
+       this.fetchedCity[boxIndex].comments.splice(this.fetchedCity.indexOf(commentId), 1);
+       console.log(this.fetchedCity);
+        $(currentComment).closest('p').remove();
     }
 }
 

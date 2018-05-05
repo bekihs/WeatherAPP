@@ -46,4 +46,9 @@ $('.new-div').on('click', '.submit-comment', function () {
 
 $('.new-div').on('click', '.fa-window-close', function(){
     newCity.removeWeatherBox(this);
-})
+});
+
+
+$('.new-div').on('click', '.fa-trash', function(){
+    newCity.removeComment(this);
+});
