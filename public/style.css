@@ -1,12 +1,17 @@
-body {
-    background-image: url("clouds123.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
+body { 
+        background: url("clouds123.jpg") no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
 
 #title {
     text-align: center;
-    color: rgba(255, 255, 255, 0.918)
+    color: rgba(255, 255, 255, 0.918);
+    font-family: 'Lobster', cursive;
+    font-size: 50px;
 }
 
 .render-div {
@@ -45,3 +50,8 @@ body {
 .comments-container .fa-trash {
     color: rgba(148, 37, 37, 0.623);
 }
+
+.comments-container .fa-trash:hover {
+    color: rgba(167, 9, 9, 0.842);
+    cursor: pointer; 
+};

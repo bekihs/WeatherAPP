@@ -1,10 +1,13 @@
 import {Data} from './data.js';
 import {WeatherApi} from './weatherapi.js';
-//import {Remove} from './remove.js';
+import {Render} from './render.js';
 
-var newCity = new Data
-var fecthedData = new WeatherApi;
-//var removePost = new Remove;
+var newCity = new Data()
+var fecthedData = new WeatherApi();
+var renderPage = new Render();
+// render from local storage on page reload
+var cities = newCity.fetchedCity;
+renderPage.successCallback(cities);
 
 $('.get-city-form').on('click', '.get-data', function () {
         var cityInput = $(this).parent().prev().val();
@@ -25,6 +28,7 @@ $('.get-city-form').on('click', '.get-data', function () {
                     comments: []
                 };
                 newCity.addCitytoArray(cityInfo);
+               
             })
             .catch(function (jqXHR, textStatus, errorThrown) {
                 console.log(textStatus);
