@@ -25,16 +25,18 @@ class Data {
         }
     
     addCitytoArray(cityInfo) {
-        $('.new-div').empty();
+        $('.new-div').empty(); // the data layer shouldn't know about the HTML at all - this line of code should be in the controller/HTML layer
 
         this.fetchedCity.push(cityInfo);
         this._saveToLocalStorage()
-        renderPost.successCallback(this.fetchedCity) //this will render to page
+        // Maybe invoke this function from the controller. 
+        renderPost.successCallback(this.fetchedCity) //this will render to page 
+        
         
     }
    
     createCommentObj(comment, postId) {
-        $('.new-div').empty();
+        $('.new-div').empty(); // gain, no HTML in the data layer
         var city = this.getPostById(postId)
         var commObj = {
             text: comment,
@@ -45,12 +47,14 @@ class Data {
        this._saveToLocalStorage()
        this.commentID += 1
        console.log(this.fetchedCity);
+        
+        // Cal this fun ction from the controller
        renderPost.successCallback(this.fetchedCity)
     }
 
     
     removeWeatherBox(currentIcon){
-        var clickedIcon = $(currentIcon).closest('.render-div');
+        var clickedIcon = $(currentIcon).closest('.render-div'); // view again
         var id = clickedIcon.data().id;
 
         var box = this.getPostById(id);
@@ -58,6 +62,8 @@ class Data {
         this.fetchedCity.splice(this.fetchedCity.indexOf(box), 1);
         this._saveToLocalStorage()
        // console.log(this.fetchedCity);
+        
+        // Call the render function from the controller - Don't change the view from the data layer
         clickedIcon.remove();
 
 
@@ -73,6 +79,8 @@ class Data {
        this.fetchedCity[boxIndex].comments.splice(this.fetchedCity.indexOf(commentId), 1);
        this._saveToLocalStorage()
        console.log(this.fetchedCity);
+        
+        // Never change the view without checking the data. You should invoke the render function and not to change the view like that/
         $(currentComment).closest('p').remove();
     }
 }
